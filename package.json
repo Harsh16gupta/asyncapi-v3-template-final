@@ -1,16 +1,27 @@
 {
   "name": "asyncapi-v3-template",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "A template that generates a Python MQTT client using MQTT.",
+  "generator": {
+    "apiVersion": "v3",
+    "generator": ">=1.10.0 <3.0.0",
+    "supportedProtocols": ["mqtt"]
   },
+  "scripts": {
+    "clean": "rimraf test/project",
+    "generate": "asyncapi generate fromTemplate test/fixtures/asyncapi.yml ./ -o test/project",
+    "test": "npm run clean && npm run generate"
+    
+  },
+  "main": "index.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "dependencies": {
     "@asyncapi/generator-react-sdk": "^1.1.3"
+  },
+  "devDependencies": {
+    "rimraf": "^5.0.0"
   }
 }

@@ -1,0 +1,21 @@
+asyncapi: 3.0.0
+
+info:
+  title: Temperature Service
+  version: 1.0.0
+  description: This service is in charge of processing all the events related to temperature.
+
+servers:
+  dev:
+    host: test.mosquitto.org
+    protocol: mqtt
+
+channels:
+  temperatureChanged:
+    address: temperature/changed
+
+operations:
+  temperatureChange:
+    action: send
+    channel:
+      $ref: '#/channels/temperatureChanged'
