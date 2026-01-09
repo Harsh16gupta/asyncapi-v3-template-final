@@ -1,3 +1,8 @@
-node_modules/
-test/project/
+node_modules
+
 .vscode/
+test/project/client.py
+test/project/requirements.txt
+test/IntegrationSnaps
+test/project/README.md
+test/project/readme.md
