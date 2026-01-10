@@ -36,7 +36,6 @@ channels:
           $ref: '#/components/schemas/temperatureId'
     description: Notifies the user when the temperature rises past a certain point.
 
-
 operations:
   temperatureChange:
     action: receive

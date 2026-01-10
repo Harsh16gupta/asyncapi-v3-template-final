@@ -1,8 +1,7 @@
 
 import { File, Text } from '@asyncapi/generator-react-sdk'
 import { TopicFunction } from '../components/TopicFunction'
-export default function ({ asyncapi, params }) {
-  const operations = asyncapi.operations().filterByReceive();  
+export default function ({ asyncapi, params }) {  
   return (
     <File name="client.py">    
       <Text newLines={2}>import paho.mqtt.client as mqtt</Text>   
@@ -14,7 +13,7 @@ export default function ({ asyncapi, params }) {
             self.client.connect(mqttBroker)`}
       </Text>
       <Text indent={2} newLines={2}>
-        <TopicFunction operations={operations} />
+        <TopicFunction operations={asyncapi.operations().filterByReceive()} />
       </Text>
       </File>
   )

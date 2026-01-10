@@ -1,6 +1,8 @@
-node_modules
+
+__pycache__
 __transpiled
-.vscode/
+node_modules
+
 test/project/client.py
 test/project/requirements.txt
 test/IntegrationSnaps

@@ -23,9 +23,9 @@ export function TopicFunction({ operations }) {
  * As input it requires a list of Channel models from the parsed AsyncAPI document
  */
 function getTopics(operations) {
-  const topicsDetails = [];
+  let topicsDetails = [];
 
-  operations.forEach(op => {
+  operations.forEach((op) => {
     const channels = op.channels().all();
     if (!channels.length) return;
 
