@@ -2,8 +2,8 @@
  * This component returns a block of functions that user can use to send messages to specific topic.
  * As input it requires a list of Channel models from the parsed AsyncAPI document
  */
-export function TopicFunction({ channels }) {
-  const topicsDetails = getTopics(channels);
+export function TopicFunction({ operations }) {
+  const topicsDetails = getTopics(operations);
   let functions = '';
 
   topicsDetails.forEach((t) => {
@@ -22,18 +22,21 @@ export function TopicFunction({ channels }) {
  *
  * As input it requires a list of Channel models from the parsed AsyncAPI document
  */
-function getTopics(channels) {
-  const channelsCanSendTo = channels;
-  let topicsDetails = [];
+function getTopics(operations) {
+  const topicsDetails = [];
 
-  channelsCanSendTo.forEach((ch) => {
-    const topic = {};
-    const operationId = ch.operations().filterByReceive()[0].id();
-    topic.name = operationId.charAt(0).toUpperCase() + operationId.slice(1);
-    topic.topic = ch.address();
+  operations.forEach(op => {
+    const channels = op.channels().all();
+    if (!channels.length) return;
 
-    topicsDetails.push(topic);
-  })
+    const channel = channels[0];
+    const operationId = op.operationId() || op.id();
+
+    topicsDetails.push({
+      name: operationId.charAt(0).toUpperCase() + operationId.slice(1),
+      topic: channel.address()
+    });
+  });
 
   return topicsDetails;
 }
