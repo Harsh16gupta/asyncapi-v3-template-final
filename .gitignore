@@ -1,5 +1,5 @@
 node_modules
-
+__transpiled
 .vscode/
 test/project/client.py
 test/project/requirements.txt
