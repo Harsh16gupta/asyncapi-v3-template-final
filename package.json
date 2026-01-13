@@ -1,10 +1,10 @@
 {
-  "name": "asyncapi-v3-template",
+  "name": "asyncapi-v3-template-final",
   "version": "1.0.0",
   "description": "A template that generates a Python MQTT client using MQTT.",
   "generator": {
     "apiVersion": "v3",
-    "generator": ">=1.10.0 <=3.0.1",
+    "generator": ">=2.0.0 <4.0.0",
     "supportedProtocols": ["mqtt"],
     "parameters": {
             "server": {
